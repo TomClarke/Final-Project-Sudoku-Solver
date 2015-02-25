@@ -1,0 +1,47 @@
+/**
+ * 
+ */
+package src;
+
+import javax.swing.JButton;
+
+
+
+public class Model {
+
+		  
+private final View view = new View();
+
+	
+	public void Solve() {
+		
+	}
+
+	
+	public void Save() {
+		view.Save();
+	}
+	
+	
+	public void Load() {
+
+		
+		view.Load();
+		
+	}
+	
+	
+	public void Erase() {
+
+	}
+
+	
+	public void Help() {
+		
+	}
+	
+	public void Buttons() {
+		
+	}
+
+}

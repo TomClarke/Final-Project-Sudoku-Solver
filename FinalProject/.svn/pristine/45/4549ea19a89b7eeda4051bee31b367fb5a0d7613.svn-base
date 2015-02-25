@@ -1,0 +1,102 @@
+package src;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+// Big Java Book CAY S. HORSTMANN pages 664-676
+
+public class DynamicTree {
+
+
+	static String fileName = "/Users/TomClarke/SkyDrive/ComputerScience/Year3/DataSet.txt";
+
+	static ArrayList<Integer> list = new ArrayList<Integer>();
+	private Node root;
+
+	
+	public DynamicTree(){
+		
+		root = new Node();
+        root.number = 0;
+        root.children = new ArrayList<Node>();
+	}
+
+	public void Initailise() {
+
+		DynamicTree tree = new DynamicTree();
+
+		try {
+			File file = new File(fileName);
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String s; 
+			while ((s = in.readLine()) != null) {
+				findInteger(s);
+			}
+			in.close();
+		} catch (IOException e) {
+			System.out.println("File Read Error: ");
+		}
+		System.out.println("Integers: " + list);
+
+		tree.run(tree);
+
+
+	}
+
+
+
+	private static void findInteger(String s){
+		String [] parts = s.split(", ");
+
+		for (int i = 0; i < parts.length; i++) {
+			try{
+				int j = Integer.parseInt(parts[i]);
+				list.add(j);
+			} catch (Exception e){}
+		}
+	}
+	
+	public void run(DynamicTree tree){
+
+		for (int i = 0; i < list.size(); i++){
+
+			tree.add(list.get(i));
+			
+			
+		}
+		
+		print();
+
+	}
+	
+	
+	public void add(int num){
+		
+		
+		Node newNode = new Node();
+		newNode.number = num;
+		newNode.left = null;
+		newNode.right = null;
+		if (root == null) root = newNode;
+		else root.addNode(newNode);
+	}
+	
+	
+		public void print(){
+	if (root!=null){
+		root.print();
+		System.out.println();
+		}
+	}
+	
+
+	
+	
+	
+	
+	
+
+}

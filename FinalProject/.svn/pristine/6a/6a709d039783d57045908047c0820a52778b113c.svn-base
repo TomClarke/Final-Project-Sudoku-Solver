@@ -1,0 +1,91 @@
+/**
+ * 
+ */
+package src;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+
+/**
+ * @author TomClarke
+ *
+ */
+public class HashFunction {
+
+	
+	/** The file name. */
+	static String fileName = "/Users/TomClarke/SkyDrive/ComputerScience/Year3/DataSet.txt";
+	
+	/** The list to hold the file data . */
+	static ArrayList<Integer> list = new ArrayList<Integer>();
+	
+	HashSet<Integer> h = new HashSet<Integer>();
+	
+	
+	
+
+	private void run() {
+	
+		for (int i=0; i < list.size(); i++){
+			int store = list.get(i);
+			h.add(store);
+		}
+	//h.add(list);
+	System.out.println(h);
+	}	
+
+	
+	
+	/**
+	 * The main method.
+	 *sets up a priority queue
+	 *reads the file and looks for the integers within the file by 
+	 *using the read line and find integer presets, these allow the 
+	 *integers to be found quickly and put into the list
+	 *
+	 *There is a catch exception to deal with file read errors 
+	 * @param args the arguments
+	 */
+	public void Initialise(){
+
+		HashSet<ArrayList<Integer>> h = new HashSet<ArrayList<Integer>>();
+		
+	
+		try {
+			File file = new File(fileName);
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String s; 
+			while ((s = in.readLine()) != null) {
+				findInteger(s);
+			}
+			in.close();
+		} catch (IOException e) {
+			System.out.println("File Read Error: ");
+		}
+		System.out.println("Integers: " + list);
+		
+	run();
+
+	}
+
+	
+
+	private static void findInteger(String s){
+		String [] parts = s.split(", ");
+
+		for (int i = 0; i < parts.length; i++) {
+			try{
+				int j = Integer.parseInt(parts[i]);
+				list.add(j);
+			} catch (Exception e){}
+		}
+	}
+	
+
+	
+	
+}

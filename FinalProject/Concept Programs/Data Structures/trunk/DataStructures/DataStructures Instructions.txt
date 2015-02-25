@@ -1,0 +1,19 @@
+INSTALLATION INSTRUCTIONS 
+Data Structures
+
+copy code to directory
+
+move to the saved directory:
+Data Structure/tag/DataStructures/src
+
+1. create a folder classes within the src folder to export the classes
+
+2. javac -d classes *.java
+
+to compile to java files into the classes folder
+
+3. java -cp classes src.Runner
+
+to run the program
+
+

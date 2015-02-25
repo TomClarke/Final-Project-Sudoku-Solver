@@ -1,0 +1,15 @@
+INSTALLATION INSTRUCTIONS 
+8Queens
+
+copy code to directory
+
+move to the saved directory:
+8Queens/src/
+
+type: javac Queens.java
+to compile to java files
+
+type: java Queens
+to run the program
+
+

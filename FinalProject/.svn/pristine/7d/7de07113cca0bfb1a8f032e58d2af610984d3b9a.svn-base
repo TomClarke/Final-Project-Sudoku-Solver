@@ -1,0 +1,30 @@
+Directory Structure
+
+InterimSubmissions
+
+Reports:
+Can be found within:
+
+Interim Report:
+Documentation/InterimSubmission/Documents/InterimReport
+ 
+TermReports:
+Documentation/InterimSubmission/Documents/TermReports
+
+
+Programs: 
+Can be found within: 
+
+For each program I created a project, this has meant each program has a different tag, my apologies.
+
+GUI:
+Concept Programs/GUI/tags
+
+Data Structures:
+Concept Programs/Data Structures/tags
+
+TicTacToe:
+Concept Programs/TicTacToe/tags
+
+8Queens:
+Concept Programs/8Queens/tags

@@ -1,0 +1,17 @@
+INSTALLATION INSTRUCTIONS 
+TicTacToe
+
+copy code to directory
+
+move to the saved directory:
+/tag/TicTacToe/src2
+
+1. create a folder classes within the src folder to export the classes
+
+2. javac -d classes *.java
+
+to compile to java files into the classes folder
+
+3. java -cp classes src2.TicTacToe
+
+to run the program

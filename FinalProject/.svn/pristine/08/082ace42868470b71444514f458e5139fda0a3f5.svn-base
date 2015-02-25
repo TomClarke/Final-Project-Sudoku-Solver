@@ -1,0 +1,147 @@
+/**
+ * 
+ */
+package src;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+/**
+ * @author TomClarke
+ *
+ *
+ * Sources:
+ * Algorithms and Complexity, I Anders Yeo CS2860 September 2011
+ * http://www.newthinktank.com/2013/04/java-heap-tutorial/
+ * Big Java Book CAY S. HORSTMANN pages 676-692
+ */
+public class Heap {
+
+	
+	/** The file name. */
+	static String fileName = "/Users/TomClarke/SkyDrive/ComputerScience/Year3/DataSet.txt";
+	static ArrayList<Integer> list = new ArrayList<Integer>();
+
+	
+	
+	/**
+	 * The main method.
+	 *sets up a priority queue
+	 *reads the file and looks for the integers within the file by 
+	 *using the read line and find integer presets, these allow the 
+	 *integers to be found quickly and put into the list
+	 *
+	 *There is a catch exception to deal with file read errors 
+	 * @param args the arguments
+	 */
+	public void Initialise(){
+
+		Heap heap = new Heap();
+
+		try {
+			File file = new File(fileName);
+			BufferedReader in = new BufferedReader(new FileReader(file));
+			String s; 
+			while ((s = in.readLine()) != null) {
+				findInteger(s);
+			}
+			in.close();
+		} catch (IOException e) {
+			System.out.println("File Read Error: ");
+		}
+		System.out.println("Integers: " + list);
+	
+
+		heap.Run();
+
+
+	}
+
+	public static void findInteger(String s){
+		String [] parts = s.split(", ");
+
+		
+		for (int i = 0; i < parts.length; i++) {
+			try{
+				int j = Integer.parseInt(parts[i]);
+				list.add(j);
+			} catch (Exception e){}
+		}
+	}	
+	
+	public void Run() {
+	
+	heap(list.size(),list);
+	System.out.println(list);
+		
+	}
+	
+
+
+	private void heap(int size, ArrayList<Integer> list) {
+		makeHeap(size, list);
+		for (int i = size -1; i >= 1; i--){
+			
+			int temp = list.get(i);
+			list.set(i, list.get(0));
+			list.set(0, temp);
+			sift(0,list,i);
+
+		}
+		
+	}
+
+
+
+
+	private void sift(int i, ArrayList<Integer> list, int j) {
+	
+	
+		int key = list.get(i);
+		int parent = i;
+		int none = 1;
+		int large;
+		
+		while (2*parent+1 <= (j-1)&& none > 0){
+			if (2*parent + 1 < (j -1) && list.get(2*parent+1)<list.get(2*parent+2)){
+				large = 2* parent + 2;
+			}
+			else{
+				large = 2 * parent + 1;
+			}
+			
+			if(key < list.get(large)){
+				list.set(parent,list.get(large));
+				parent = large;
+			}
+			else{
+				none = 0;
+			}
+			list.set(parent, key);
+		}
+		
+	}
+
+	private void makeHeap(int size, ArrayList<Integer> list) {
+	
+		for (int i = ((size / 2) - 1); i>= 0; i--){
+			
+			
+			
+			sift(i, list,size);
+		}
+		System.out.println("Heap Created :"+list);
+		
+	}
+	
+
+	
+	
+	
+	
+
+
+}
